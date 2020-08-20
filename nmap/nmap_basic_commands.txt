@@ -1,0 +1,29 @@
+scan networks ping:
+
+$ nmap -sP 10.66.51.0/24
+
+info:
+tcp is a three way handshake
+client ----[syn]---->      server
+client <----[syn, ack]---- server
+client ----[ack]---->      server
+
+scan network open ports:
+$ sudo nmap -sT -p 80,443 10.66.51.0/24
+
+for stealth scan(syn scan \ half open scan):
+$ sudo nmap -sS -p 80,443 10.7.1.0/24
+
+OS detection:
+$ sudo nmap -O 10.66.43.11
+to enable OS and version detection, script scanning, and traceroute; -T4 for faster execution; and then the hostname
+$ nmap -A -T4 scanme.nmap.org
+
+obfuscation (hide identity while scanning):
+$ sudo nmap -sS -D <decoy ip> <target ip>
+
+info:
+use nmap scripting engine for better optimisation
+
+to run all the scripts under vulnerability
+$ sudo nmap --script vuln <targe ip>
